@@ -10,8 +10,9 @@ var target_position: Vector2 = Vector2.ZERO
 var is_moving_to_target: bool = false
 var can_interact: bool = false
 var nearest_hotspot: Area2D = null
+var last_direction: Vector2 = Vector2.DOWN
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	# 初始化
@@ -48,7 +49,33 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 	
+	# 更新动画
+	update_animation()
+	
 	move_and_slide()
+
+func update_animation() -> void:
+	if velocity.length() > 0:
+		# 移动中 - 播放行走动画
+		last_direction = velocity.normalized()
+		
+		# 根据方向选择动画
+		# 判断主要方向（横向或纵向）
+		if abs(velocity.x) > abs(velocity.y):
+			# 横向移动
+			if velocity.x > 0:
+				animated_sprite.play("walk_right")
+			else:
+				animated_sprite.play("walk_left")
+		else:
+			# 纵向移动
+			if velocity.y > 0:
+				animated_sprite.play("walk_down")
+			else:
+				animated_sprite.play("walk_up")
+	else:
+		# 静止 - 播放待机动画
+		animated_sprite.play("idle")
 
 func _unhandled_input(event: InputEvent) -> void:
 	# 点击地面移动
