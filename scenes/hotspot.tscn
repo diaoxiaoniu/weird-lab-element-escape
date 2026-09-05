@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://djvhh5m3wn8nx"]
+
+[ext_resource type="Script" path="res://scripts/hotspot.gd" id="1_hotspot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hotspot"]
+radius = 50.0
+
+[node name="Hotspot" type="Area2D" groups=["hotspots"]]
+script = ExtResource("1_hotspot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hotspot")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.3, 0.3, 0.5)
+scale = Vector2(50, 50)
+region_enabled = true
+region_rect = Rect2(0, 0, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -60.0
+offset_top = -80.0
+offset_right = 60.0
+offset_bottom = -50.0
+theme_override_colors/font_color = Color(1, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "[E] 交互"
+horizontal_alignment = 1
+vertical_alignment = 1
