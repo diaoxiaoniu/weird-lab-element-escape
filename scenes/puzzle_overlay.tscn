@@ -1,0 +1,198 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxm3k8qw7nfp2"]
+
+[ext_resource type="Script" path="res://scripts/puzzle_overlay.gd" id="1_puzzle"]
+
+[node name="PuzzleOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_puzzle")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.1, 0.9)
+
+[node name="MainContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBox" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HeaderRow" type="HBoxContainer" parent="MainContainer/VBox"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MainContainer/VBox/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 28
+text = "关卡标题"
+vertical_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="MainContainer/VBox/HeaderRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "关闭"
+
+[node name="StatusLabel" type="Label" parent="MainContainer/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+
+[node name="DialoguePanel" type="PanelContainer" parent="MainContainer/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DialogueBox" type="MarginContainer" parent="MainContainer/VBox/DialoguePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBox" type="HBoxContainer" parent="MainContainer/VBox/DialoguePanel/DialogueBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PortraitContainer" type="MarginContainer" parent="MainContainer/VBox/DialoguePanel/DialogueBox/HBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Portrait" type="TextureRect" parent="MainContainer/VBox/DialoguePanel/DialogueBox/HBox/PortraitContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBox" type="VBoxContainer" parent="MainContainer/VBox/DialoguePanel/DialogueBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="SpeakerLabel" type="Label" parent="MainContainer/VBox/DialoguePanel/DialogueBox/HBox/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "角色名称"
+
+[node name="DialogueLabel" type="Label" parent="MainContainer/VBox/DialoguePanel/DialogueBox/HBox/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 18
+text = "对话内容会显示在这里。"
+autowrap_mode = 3
+
+[node name="InvestigateRow" type="VBoxContainer" parent="MainContainer/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ChoiceRow" type="VBoxContainer" parent="MainContainer/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ButtonRow" type="HBoxContainer" parent="MainContainer/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TipsBtn" type="Button" parent="MainContainer/VBox/ButtonRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "提示"
+
+[node name="ContinueBtn" type="Button" parent="MainContainer/VBox/ButtonRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "继续"
+
+[node name="TipPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TipPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TipLabel" type="Label" parent="TipPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "提示内容"
+autowrap_mode = 3
+
+[node name="RecapPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RecapPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="RecapLabel" type="Label" parent="RecapPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "回顾内容"
+autowrap_mode = 3

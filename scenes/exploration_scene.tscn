@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr7k5b2nw8dfo"]
+
+[ext_resource type="Script" path="res://scripts/exploration_scene.gd" id="1_exploration"]
+[ext_resource type="Texture2D" uid="uid://bjw6j3dfu6cy3" path="res://assets/lab_bg_placeholder.png" id="2_bg"]
+[ext_resource type="PackedScene" uid="uid://c8vn7x2qm2wvb" path="res://scenes/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" uid="uid://djvhh5m3wn8nx" path="res://scenes/hotspot.tscn" id="4_hotspot"]
+[ext_resource type="PackedScene" uid="uid://bxm3k8qw7nfp2" path="res://scenes/puzzle_overlay.tscn" id="5_puzzle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_h"]
+size = Vector2(1280, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_v"]
+size = Vector2(50, 720)
+
+[node name="ExplorationScene" type="Node2D"]
+script = ExtResource("1_exploration")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_bg")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="TopWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(640, 50)
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="BottomWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(640, 670)
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(50, 360)
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="RightWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1230, 360)
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="Player" type="CharacterBody2D" parent="." instance=ExtResource("3_player")]
+position = Vector2(640, 500)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="FireHotspot" parent="Hotspots" instance=ExtResource("4_hotspot")]
+position = Vector2(640, 250)
+hotspot_id = "fire"
+hotspot_name = "火源"
+interaction_hint = "[E] 查看火源"
+
+[node name="WaterHotspot" parent="Hotspots" instance=ExtResource("4_hotspot")]
+position = Vector2(300, 300)
+hotspot_id = "water"
+hotspot_name = "水槽"
+interaction_hint = "[E] 使用水"
+
+[node name="BlanketHotspot" parent="Hotspots" instance=ExtResource("4_hotspot")]
+position = Vector2(450, 450)
+hotspot_id = "blanket"
+hotspot_name = "防火毯"
+interaction_hint = "[E] 使用防火毯"
+
+[node name="CO2Hotspot" parent="Hotspots" instance=ExtResource("4_hotspot")]
+position = Vector2(850, 450)
+hotspot_id = "co2"
+hotspot_name = "CO2灭火器"
+interaction_hint = "[E] 使用CO2"
+
+[node name="AlcoholHotspot" parent="Hotspots" instance=ExtResource("4_hotspot")]
+position = Vector2(1000, 300)
+hotspot_id = "alcohol"
+hotspot_name = "酒精"
+interaction_hint = "[E] 倒入酒精"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PuzzleOverlay" parent="CanvasLayer" instance=ExtResource("5_puzzle")]
+visible = false
+
+[node name="IntroLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -100.0
+offset_right = 400.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "警报声刺耳地响起..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
