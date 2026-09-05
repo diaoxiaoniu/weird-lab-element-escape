@@ -18,10 +18,14 @@ var fail_count: int = 0
 var unlocked_tips: Array = []
 var selected_choice: String = ""
 
+# 角色肖像纹理（占位符美术资源）
+var portrait_textures: Dictionary = {}
+
 # UI节点引用（使用唯一名称避免路径依赖）
 @onready var TitleLabel: Label = %TitleLabel
 @onready var SpeakerLabel: Label = %SpeakerLabel
 @onready var DialogueLabel: Label = %DialogueLabel
+@onready var Portrait: TextureRect = %Portrait
 @onready var ContinueBtn: Button = %ContinueBtn
 @onready var TipsBtn: Button = %TipsBtn
 @onready var TipPanel: PanelContainer = %TipPanel
@@ -36,6 +40,9 @@ func _ready() -> void:
 	# 加载角色数据
 	characters = LevelLoader.load_characters()
 	
+	# 加载角色肖像纹理（占位符）
+	load_portraits()
+	
 	# 加载第一关
 	load_level("ch1_lv01_fire_edge")
 	
@@ -48,9 +55,16 @@ func _ready() -> void:
 	InvestigateRow.hide()
 	ChoiceRow.hide()
 	RecapPanel.hide()
+	Portrait.hide()
 	
 	# 开始游戏
 	show_intro()
+
+func load_portraits() -> void:
+	# 加载占位符肖像图片
+	portrait_textures["rixen"] = load("res://assets/portrait_rixen_placeholder.png")
+	portrait_textures["mori"] = load("res://assets/portrait_mori_placeholder.png")
+	# system 角色不显示肖像或使用默认图标
 
 func load_level(level_id: String) -> void:
 	level_data = LevelLoader.load_level(level_id)
@@ -249,7 +263,16 @@ func update_dialogue(speaker_id: String, text: String) -> void:
 		var speaker_color = LevelLoader.get_character_color(speaker_id, characters)
 		SpeakerLabel.text = speaker_name
 		SpeakerLabel.modulate = speaker_color
+		
+		# 显示对应角色的肖像
+		if speaker_id in portrait_textures:
+			Portrait.texture = portrait_textures[speaker_id]
+			Portrait.show()
+		else:
+			# system 或其他角色不显示肖像
+			Portrait.hide()
 	else:
 		SpeakerLabel.text = ""
+		Portrait.hide()
 	
 	DialogueLabel.text = text
