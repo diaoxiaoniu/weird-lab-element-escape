@@ -37,6 +37,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="TitleLabel" type="Label" parent="MainContainer/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
 theme_override_font_sizes/font_size = 32
@@ -44,6 +45,7 @@ text = "关卡标题"
 horizontal_alignment = 1
 
 [node name="StatusLabel" type="Label" parent="MainContainer/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 16
@@ -66,11 +68,13 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="SpeakerLabel" type="Label" parent="MainContainer/VBox/DialoguePanel/DialogueBox/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "角色名称"
 
 [node name="DialogueLabel" type="Label" parent="MainContainer/VBox/DialoguePanel/DialogueBox/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
@@ -78,10 +82,12 @@ text = "对话内容会显示在这里。"
 autowrap_mode = 3
 
 [node name="InvestigateRow" type="VBoxContainer" parent="MainContainer/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="ChoiceRow" type="VBoxContainer" parent="MainContainer/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
@@ -91,18 +97,21 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="TipsBtn" type="Button" parent="MainContainer/VBox/ButtonRow"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "提示"
 
 [node name="ContinueBtn" type="Button" parent="MainContainer/VBox/ButtonRow"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "继续"
 
 [node name="TipPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,12 +133,14 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="TipLabel" type="Label" parent="TipPanel/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "提示内容"
 autowrap_mode = 3
 
 [node name="RecapPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -151,6 +162,7 @@ theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
 [node name="RecapLabel" type="Label" parent="RecapPanel/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.9, 0.5, 1)
 theme_override_font_sizes/font_size = 18

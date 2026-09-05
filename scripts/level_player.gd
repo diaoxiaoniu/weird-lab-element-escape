@@ -18,19 +18,19 @@ var fail_count: int = 0
 var unlocked_tips: Array = []
 var selected_choice: String = ""
 
-# UI节点引用
-@onready var TitleLabel: Label = $TitleLabel
-@onready var SpeakerLabel: Label = $SpeakerLabel
-@onready var DialogueLabel: Label = $DialogueLabel
-@onready var ContinueBtn: Button = $ContinueBtn
-@onready var TipsBtn: Button = $TipsBtn
-@onready var TipPanel: PanelContainer = $TipPanel
-@onready var TipLabel: Label = $TipPanel/TipLabel
-@onready var InvestigateRow: VBoxContainer = $InvestigateRow
-@onready var ChoiceRow: VBoxContainer = $ChoiceRow
-@onready var RecapPanel: PanelContainer = $RecapPanel
-@onready var RecapLabel: Label = $RecapPanel/RecapLabel
-@onready var StatusLabel: Label = $StatusLabel
+# UI节点引用（使用唯一名称避免路径依赖）
+@onready var TitleLabel: Label = %TitleLabel
+@onready var SpeakerLabel: Label = %SpeakerLabel
+@onready var DialogueLabel: Label = %DialogueLabel
+@onready var ContinueBtn: Button = %ContinueBtn
+@onready var TipsBtn: Button = %TipsBtn
+@onready var TipPanel: PanelContainer = %TipPanel
+@onready var TipLabel: Label = %TipLabel
+@onready var InvestigateRow: VBoxContainer = %InvestigateRow
+@onready var ChoiceRow: VBoxContainer = %ChoiceRow
+@onready var RecapPanel: PanelContainer = %RecapPanel
+@onready var RecapLabel: Label = %RecapLabel
+@onready var StatusLabel: Label = %StatusLabel
 
 func _ready() -> void:
 	# 加载角色数据
