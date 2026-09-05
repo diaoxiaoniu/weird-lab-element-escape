@@ -1,0 +1,22 @@
+{
+  "characters": {
+    "rixen": {
+      "name": "芮克森·玻尔",
+      "name_en": "Rixen Bohr",
+      "color": "#7ec8e3",
+      "description": "化学天才，实验室的核心研究员，擅长理论推演"
+    },
+    "mori": {
+      "name": "莫里·离子",
+      "name_en": "Mori Ion",
+      "color": "#ffe66d",
+      "description": "实践派化学家，动手能力强，直觉敏锐"
+    },
+    "system": {
+      "name": "维稳协议",
+      "name_en": "System",
+      "color": "#ff6b6b",
+      "description": "实验室AI系统，既是助手也是监管者"
+    }
+  }
+}
